@@ -1,0 +1,211 @@
+   
+    /*----------------- responsive ------------------*/
+    $mobile-max: 768px;
+    $desktop: 992px;
+
+        @mixin mobile{
+            @media (max-width: #{$mobile-max}){
+                @content;
+            }
+        }
+        
+        
+        
+        @mixin desktop{
+            @media (min-width: #{$mobile-max}){
+                @content;
+            }
+        }
+
+    /*----------------- predefined classes-------------------*/
+
+    .pointer{
+        cursor:pointer;
+        }
+
+        
+        .center-hr{
+            margin-left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .center-vr{
+            top: 50%;
+            position: relative;
+            transform: translateY(-50%);
+        }
+        
+        
+        
+        .hide-desktop{
+            @include desktop{
+                display: none !important;
+            }
+        }
+        
+        .hide-mobile{
+            @include mobile{
+                display: none !important;
+            }
+        }
+
+        body,html{
+            overflow-x:hidden;
+            padding-left: 7px;
+            font-family: "Roboto" !important;
+            min-height: 100%;
+        
+            @include mobile{
+                padding-left: 14px;
+            }
+            
+        }
+
+        /*----------------- override bootstrap -------------------*/
+
+        .form-control{
+            max-width: 70%;
+        }
+
+
+    /*----------------- side menu styles-------------------*/
+
+    .menu-toggle{
+        background: #34495e;
+        padding: 9px 15px;
+        height: 51.5px !important;
+
+        i{
+            color: #fff;
+        }
+    }
+
+    .left-menu{
+            
+        z-index: 999;
+        display: block;
+        width: 300px;
+        background: #34495e;
+        margin: 0px;
+        padding-top: 0px;
+        height: 1000px;
+        overflow-y: auto;
+        transition: all 0.4s ease;
+
+        @include mobile{
+            margin-left: -220px;
+            width: 220px;
+        }
+    
+    
+    .list{
+        color: #fff;
+        list-style-type: none;
+        padding-top: 0px;
+        padding-left: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    
+     li{
+        display: flex;
+        align-content: center;
+        justify-content: flex-start;
+        padding-left: 30px;
+        cursor: pointer;
+        margin-top: 0px;
+        padding-top: 22px;
+        padding-bottom: 15px;
+    }
+    
+    li i{
+        margin-left: auto;
+        margin-right: 30px;
+    }
+    
+    .sub h3{
+        font-weight: 300;
+        font-size: 20px;
+
+        @include mobile{
+            font-size: 16px;
+        }
+    }
+    
+    .sub{
+        display: none;
+        background: #2c3e50;
+        transition: background 0.3s ease;
+    }
+    
+    .sub:hover{
+        background: #212F3D;
+    }
+    
+    .main{
+        width: 100%;
+        margin-left: 300px;
+        text-align: center;
+    }
+    
+    .top{
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        
+    }
+    
+    .top h3{
+        font-weight: 500;
+        font-size: 18px;
+
+        @include mobile{
+            font-size: 14px;
+        }
+    }
+    
+    .top:hover{
+        background:#e74c3c; 
+        
+    }
+    
+    .rotatedown{
+        margin-top: -10px;
+        transform: rotate(90deg);
+    }
+    
+    
+}
+
+/*----------------- pages container -------------------*/
+.page-container{
+    width:100%;
+    min-height: 100%;
+    background: #fefefe;
+    padding-top: 7px;
+
+
+    @include desktop{
+        padding-left: 300px;
+        padding-top: 50px;
+    }
+
+    .page-title{
+        @include mobile{
+            margin-left: 55px;
+        }
+    }
+
+}
+
+.pre-input{
+    background: #e74c3c;
+    color: #fff;
+    padding: 10px 15px;
+}
+
+.search-box{
+    font-size: 19px;
+    height: 45px;
+    border-bottom-left-radius: 0px !important;
+    border-top-left-radius: 0px !important;
+}
