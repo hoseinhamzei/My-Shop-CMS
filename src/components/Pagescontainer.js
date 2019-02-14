@@ -6,6 +6,7 @@ import Browseproducts from './Browseproducts'
 import Managecats from './Managecats'
 import Newcat from './Newcat'
 import Newproduct from './Newproduct'
+import loadingSvg from '../assets/loading.svg'
 
 
 class Pagescontainer extends Component {
@@ -17,6 +18,9 @@ class Pagescontainer extends Component {
 
     return (
       <div className='page-container'>
+        <div className='loading'>
+          <img src={loadingSvg} className='loading-gif' />
+        </div>
         <h2 className='page-title text-dark text-capitalize ml-md-5'>{page}</h2>
 
         <div className='mt-5'>

@@ -7,7 +7,7 @@ var settings = {
     siteUrl:'http://localhost:81',
 
     // REST api directory
-    api:'/api'
+    api:'/api/'
 
 };
 
