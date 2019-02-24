@@ -13,10 +13,14 @@ class Home extends Component {
   render() {
 
     return (
-      <div>
+      <div className='p-1 p-md-5'>
         <h1>hm</h1>
       </div>
     );
+  }
+
+  componentDidMount(){
+    document.title = 'MY SHOP';
   }
 
 }

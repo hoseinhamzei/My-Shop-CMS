@@ -19,26 +19,35 @@ class Sidemenu extends Component {
      // left navigation menu with mobile toggle
 
     return (
-      <div className='row position-fixed'>
+      <div className='row position-fixed menu-container'>
         
         
 
         <div className="left-menu">
+
+        <div className='menu-header'>
+            <h3 className='logo text-center'>MY SHOP</h3>
+        </div>
+
         <ul className="list">
-        <li className="top" onClick={()=> this.changePage('home')}><h3>Home</h3></li>
+        <li className="top" onClick={()=> this.changePage('home')}><h3><i className='fa fa-home'></i>Home</h3></li>
         </ul>
             
         <ul className="list">
-        <li className="top"><h3>Products</h3><i class="fa fa-arrow-right"></i></li>
-        <li className="sub" onClick={()=> this.changePage('browse products')}><h3>browse products</h3></li>
-        <li className="sub" onClick={()=> this.changePage('add new product')}><h3>add new product</h3></li>
+        <li className="top"><h3><i className='fa fa-shopping-bag'></i>Products</h3><i class="fa fa-angle-right"></i></li>
+        <li className="sub" onClick={()=> this.changePage('browse products')}><h3>Browse Products</h3></li>
+        <li className="sub" onClick={()=> this.changePage('add new product')}><h3>New Product</h3></li>
         </ul>
             
         <ul className="list">
-        <li className="top"><h3>Categories</h3><i class="fa fa-arrow-right"></i></li>
-        <li className="sub" onClick={()=> this.changePage('manage categories')}><h3>manage categories</h3></li>
-        <li className="sub" onClick={()=> this.changePage('add new category')}><h3>add new category</h3></li>
+        <li className="top"><h3><i className='fa fa-tags'></i>Categories</h3><i class="fa fa-angle-right"></i></li>
+        <li className="sub" onClick={()=> this.changePage('manage categories')}><h3>Manage Categories</h3></li>
+        <li className="sub" onClick={()=> this.changePage('add new category')}><h3>New Category</h3></li>
         </ul>
+
+        <div className='menu-footer'>
+            <p className='text-white text-center'><a href='https://github.com/hoseinhamzei'></a></p>
+        </div>
         </div>
 
         <div className='hide-desktop menu-toggle pointer'><i className='fa fa-2x fa-bars'></i></div>
@@ -65,7 +74,7 @@ class Sidemenu extends Component {
             }else{
                 sublis.slideDown(300);
                 
-                topli.find('i').addClass('rotatedown');
+                topli.find('i.fa-angle-right').addClass('rotatedown');
                 
             }
         })
@@ -77,13 +86,30 @@ class Sidemenu extends Component {
 
     $('.menu-toggle').click(()=>{
         if(this.state.mobileMenuOpen){
-            $('.left-menu').css('marginLeft','-220px');
+            $('.left-menu').css('marginLeft','-193px');
             this.setState({mobileMenuOpen:false});
         } else{
             $('.left-menu').css('marginLeft','0px');
             this.setState({mobileMenuOpen:true});
         }
     });
+
+
+    if($(window).width() < 768){
+        $(document).click((event)=>{
+            if ( $(event.target).hasClass('menu-container') ) {
+
+            if(this.state.mobileMenuOpen){
+
+                $('.left-menu').css('marginLeft','-193px');
+                this.setState({mobileMenuOpen:false});
+
+            }
+        }
+        });
+    }
+
+
 
 
   }

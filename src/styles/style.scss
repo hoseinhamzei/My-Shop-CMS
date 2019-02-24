@@ -54,7 +54,9 @@
             padding-left: 7px;
             font-family: "Roboto" !important;
             min-height: 100%;
-        
+            margin: 0px !important;
+            padding: 0px !important;
+
             @include mobile{
                 padding-left: 14px;
             }
@@ -94,6 +96,23 @@
             max-width: 70%;
         }
 
+        .modal-open .modal{
+            overflow: hidden;
+        }
+
+        input[type="text"],input[type='number'],input[type='password']{
+            border-radius:100px;
+        }
+
+        .form-control:focus{
+            border: thin solid #3498DB !important;
+            box-shadow: none !important;
+        }
+
+        .container-fluid{
+            padding: 0px !important;
+            margin: 0px !important;
+        }
 
     /*----------------- side menu styles-------------------*/
 
@@ -117,19 +136,23 @@
         padding-top: 0px;
         height: 1000px;
         overflow-y: auto;
-        transition: all 0.4s ease;
+        box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+        transition: all 0.35s ease;
+        
 
         @include mobile{
-            margin-left: -220px;
+            margin-left: -193px;
             width: 220px;
+            box-shadow: none;
         }
+
     
     
     .list{
         color: #fff;
         list-style-type: none;
         padding-top: 0px;
-        padding-left: 0px;
+        padding-left: 15px;
         margin-top: 0px;
         margin-bottom: 0px;
     }
@@ -148,6 +171,7 @@
     li i{
         margin-left: auto;
         margin-right: 30px;
+        transition: transform 0.3s ease; 
     }
     
     .sub h3{
@@ -196,11 +220,23 @@
     }
     
     .rotatedown{
-        margin-top: -10px;
         transform: rotate(90deg);
     }
     
     
+}
+
+.menu-header{
+    height: 100px;
+    padding-top: 32px;
+    border-bottom: 5px solid #fefefe;
+
+    .logo{
+        background: linear-gradient(120deg, #FCA5F1, #B5FFFF);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
 }
 
 /*----------------- pages container -------------------*/
@@ -209,16 +245,23 @@
     min-height: 100%;
     background: #fefefe;
     padding-top: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
 
 
     @include desktop{
         padding-left: 275px;
+        padding-right: 0px;
         padding-top: 50px;
     }
 
+
+
     .page-title{
         @include mobile{
-            margin-left: 55px;
+            margin-left: 85px;
+            margin-top: 6px;
+            font-size: 20px;
         }
     }
 
@@ -228,6 +271,13 @@
     background: #e74c3c;
     color: #fff;
     padding: 10px 15px;
+    transition: all 0.3s ease;
+    
+}
+
+.pre-input:hover{
+    background-clip: content-box;
+    background: #c53829;
 }
 
 .search-box{
@@ -264,4 +314,204 @@
 }
 
 
+.current-pg{
+    background: #0069d9 !important;
+}
 
+.modal-img{
+    img{
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        @include mobile{
+            width: 100%;
+        }
+    }
+}
+
+.modal-details{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    max-width: 100%;
+    box-sizing: content-box;
+
+    p{
+        max-width: 100%;
+    }
+}
+
+.modal-body{
+    overflow-y: auto;
+    overflow-x: hidden;
+    
+    
+}
+
+.modal-content{
+    max-height: 95vh;
+}
+
+
+/*----------------- add new product -------------------*/
+#price{
+    width:200px;
+}
+
+#submitBtn{
+    @include desktop{
+        margin-right: 30% !important;
+    }
+}
+
+#preview{
+    border-radius: 10px;
+}
+
+/*----------------- login page --------------------- */
+.logo{
+    font-family: 'Righteous' !important;
+}
+
+.divider{
+    height: 2px;
+    width: 100%;
+    background: #EEE6E6;
+}
+
+.login-page{
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100% !important;
+
+    .bg{
+        z-index: 1;
+        width: 100% !important;
+        height: 100% !important;
+        background: url("../assets/loginbg.jpg");
+        position: absolute;
+        background-size: cover;
+    }
+
+    .grad{
+        z-index: 2;
+        width: 100% !important;
+        height: 100% !important;
+        position: absolute;
+        display: block;
+	    opacity: 0.8;
+	    background: linear-gradient(120deg, #5B617B, #111d29);
+	    background-size: 200% 100%;
+	    animation-name: backclr;
+	    animation-duration: 10s;
+	    animation-iteration-count: infinite;
+	    animation-timing-function: linear;
+    }
+
+    .login-box{
+        z-index: 9999;
+        width: 400px;
+        background: #fefefe;
+        display: block;
+        position: absolute;
+        border-radius: 10px;
+        box-shadow: 0px 10px 10px rgba(0, 0, 20px, 0.1);
+        margin-left: 50%;
+        margin-top: 10%;
+        transform: translateX(-50%);
+
+        .logo{
+            color:#5B617B;
+        }
+
+        .box-title{
+            font-size: 22px;
+            font-weight: 200;
+        }
+
+        label{
+            font-size: 18px;
+            color: #7F8C8D;
+            margin-top: 4px;
+        }
+
+        .login-btn{
+            display: block;
+            width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        
+        @include mobile{
+            padding: 10px;
+            width: 100% !important;
+            margin-top: 0px;
+            margin-left: auto;
+            margin-right: auto;
+            transform: none;
+            border-radius: 0px;
+
+            .logo{
+                font-size: 22px;
+            }
+
+            .box-title{
+                font-size: 20px;
+            }
+
+            input{
+                width: auto !important;
+            }
+
+            .form-group{
+                margin-left: auto;
+                margin-right: auto;
+                width: 320px !important;
+            }
+
+            label{
+                font-size: 16px;
+            }
+        }
+    }
+
+
+}
+
+
+
+
+
+@keyframes backclr {
+    0% {
+   background-position:0% 50%
+   }
+    50% {
+   background-position:100% 50%
+   }
+    100% {
+   background-position:0% 50%
+   }
+   }
+
+
+   ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFF;
+            -webkit-box-shadow: inset 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e74c3c;
+            -webkit-box-shadow: inset 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #AAA;
+        }
+        ::-webkit-scrollbar-thumb:active {
+            background: #888;
+            -webkit-box-shadow: inset 1px 1px 2px rgba(0,0,0,0.3);
+        }

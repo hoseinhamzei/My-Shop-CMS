@@ -5,17 +5,21 @@ import $ from 'jquery';
 import noimage from '../assets/noimage.png'
 
 
-class Newproduct extends Component {
+class Updateproduct extends Component {
   constructor(props) {
 
     super(props);
+
     this.loadCats = this.loadCats.bind(this);
-    this.createProduct = this.createProduct.bind(this);
+    this.updateProduct = this.updateProduct.bind(this);
+
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleDescChange = this.handleDescChange.bind(this);
     this.handleCatChange = this.handleCatChange.bind(this);
     this.handlePriceChange = this.handlePriceChange.bind(this);
     this.handleFileChange = this.handleFileChange.bind(this);
+
+    this.setPreview = this.setPreview.bind(this);
 
 
     this.fileInput = React.createRef();
@@ -24,12 +28,11 @@ class Newproduct extends Component {
       notify:'',
       cats:[],
       imagePre:noimage,
-
-      name:'',
-      description:' ',
-      category_id:'',
-      price:'',
-      image:''
+      name:this.props.name,
+      description:this.props.desc,
+      category_id:this.props.catID,
+      price:this.props.price,
+      image:this.props.img
     };
   }
 
@@ -51,13 +54,15 @@ class Newproduct extends Component {
 
     })
 
+    var preview = this.setPreview();
+
     return (
-      <div className='p-1 p-md-5'>
+      <div>
         {newNotify}
         
           <div className='form-group'>
             <label htmlFor="name">Name*:</label>
-            <input value={this.state.name} type="text" className="form-control" id="name" name="name" placeholder="Enter Product Name" onChange={this.handleNameChange} required />
+            <input defaultValue={this.props.name} value={this.state.name} type="text" className="form-control" id="name" name="name" placeholder="Enter Product Name" onChange={this.handleNameChange} required />
           </div>
 
           <div className='form-group mt-2'>
@@ -68,7 +73,7 @@ class Newproduct extends Component {
           <div className="form-group mt-2">
             <label htmlFor="cat">Category*:</label>
 
-            <select onChange={this.handleCatChange} name='category_id' className="form-control" id="cat">
+            <select value={this.state.category_id} onChange={this.handleCatChange} name='category_id' className="form-control" id="cat">
               {options}
             </select>
 
@@ -85,11 +90,11 @@ class Newproduct extends Component {
             <label htmlFor='img'>Image:</label>
             <div className='row'>
               <input ref={this.fileInput} id='uploadImage' className='ml-3' type='file' accept="image/*" name="image" onChange={this.handleFileChange} />
-              <img id='preview' className='ml-md-5 mt-3 mt-md-0' src={this.state.imagePre} width='200' />
+              <img id='preview' className='ml-md-5 mt-3 mt-md-0' src={preview} width='200' />
             </div>
           </div>
 
-          <input id='submitBtn' className="btn btn-success my-3 float-right mr-5" type="button" value="Submit" onClick={this.createProduct}></input>
+          <input id='submitBtn' className="btn btn-success my-3 float-right mr-5" type="button" value="Update" onClick={this.updateProduct}></input>
           
         
       </div>
@@ -97,12 +102,23 @@ class Newproduct extends Component {
   }
 
 
+  componentWillReceiveProps(newProps){
+    this.setState({
+      name:newProps.name,
+      description:newProps.desc,
+      category_id:newProps.catID,
+      price:newProps.price,
+      image:newProps.img
+    });
+  }
+
+
 
   // load cetegories when component is loaded
   componentDidMount(){
-    document.title = 'New Product'
     this.loadCats();
   }
+
 
   loadCats(){
     $.ajax({
@@ -136,9 +152,9 @@ class Newproduct extends Component {
       }.bind(this),
 
 
-      error: function(data,error,issue){
+      error: function(data){
         
-      console.log(data+error+issue);
+      console.log(data);
 
       this.setState({notify:<Notify color='danger' btnText='retry' message='An error occured while connecting to server' onBtnClick={this.loadCats} />});
 
@@ -180,8 +196,9 @@ class Newproduct extends Component {
 
   /////////////////////// create product and send to server, if there is any error or user has entered wrong data we will notify them.
 
-  createProduct(){
+  updateProduct(){
     var pdObject = {
+      id:this.props.pdid,
       name:this.state.name,
       description:this.state.description,
       category_id:this.state.category_id,
@@ -196,17 +213,17 @@ class Newproduct extends Component {
     }
 
 
-    if(this.state.image !== ''){
+    if(this.state.image !== '' && this.state.image !== this.props.img){
       pdFormData.append('image',this.state.image);
     }
 
-    this.setState({notify:<Notify color='warning' message='Uploading...' />});
+    this.setState({notify:<Notify color='warning' message='Updating...' />});
 
     $('.loading').fadeIn(300);
 
     $.ajax({
 
-      url: settings.siteUrl+settings.api+'product/create.php',
+      url: settings.siteUrl+settings.api+'product/update.php',
       type: "POST",
       data:  pdFormData,
       contentType: false,
@@ -216,24 +233,19 @@ class Newproduct extends Component {
       success: function(data){
         console.log(data);
         this.setState({
-          notify:<Notify color='success' message={`Product "${pdObject.name}" has been successfully created`}/>,
-
-          imagePre:noimage,
-          name:'',
-          description:'',
-          price:'',
-          image:''
-        });
+          notify:<Notify color='success' message={`Product "${pdObject.name}" has been successfully updated`}/>},
+          this.props.reload
+          );
 
         $('.loading').fadeOut(300);
 
    }.bind(this),
 
-  error: function(data) {
+  error: function(error) {
 
-    console.log(data);
+    console.log(error);
 
-    this.setState({notify:<Notify color='danger' btnText='retry' message='An error occured while connecting to server' onBtnClick={this.createProduct} />});
+    this.setState({notify:<Notify color='danger' btnText='retry' message='An error occured while connecting to server' onBtnClick={this.updateProduct} />});
 
     $('.loading').fadeOut(300);
 
@@ -244,6 +256,22 @@ class Newproduct extends Component {
   
   }
 
+  ///////////// set preview image /////////////
+  setPreview(){
+
+    if(this.props.img === this.state.image && this.state.image !== settings.siteUrl+settings.api+'images/'){
+      return this.state.image;
+    }
+
+     else if(this.state.image === settings.siteUrl+settings.api+'images/'){
+        return noimage;
+    } 
+    
+    else {
+      return this.state.imagePre;
+    }
+  }
+
 }
 
-export default Newproduct;
+export default Updateproduct;

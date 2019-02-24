@@ -4,20 +4,20 @@ import { settings } from '../settings';
 import $ from 'jquery';
 
 
-class Newcat extends Component {
+class Updatecategory extends Component {
   constructor(props) {
 
     super(props);
 
-    this.createCategory = this.createCategory.bind(this);
+    this.updateCategory = this.updateCategory.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleDescChange = this.handleDescChange.bind(this);
 
 
     this.state = {
       notify:'',
-      name:'',
-      description:'',
+      name:this.props.name,
+      description:this.props.description,
     };
   }
 
@@ -34,7 +34,7 @@ class Newcat extends Component {
 
   
     return (
-      <div className='p-1 p-md-5'>
+      <div>
         {newNotify}
         
           <div className='form-group'>
@@ -48,7 +48,7 @@ class Newcat extends Component {
           </div>
 
 
-          <input id='submitBtn' className="btn btn-success my-3 float-right mr-5" type="button" value="Submit" onClick={this.createCategory}></input>
+          <input id='submitBtn' className="btn btn-success my-3 float-right mr-5" type="button" value="Update" onClick={this.updateCategory}></input>
           
         
       </div>
@@ -56,12 +56,15 @@ class Newcat extends Component {
   }
 
 
-  componentDidMount(){
-    document.title = 'New Category';
+  componentWillReceiveProps(newProps){
+    this.setState({
+      name:newProps.name,
+      description:newProps.description,
+    });
   }
 
 
- 
+
   /////////////////////// handle input changes
   handleNameChange(e){
     this.setState({name:e.target.value});
@@ -72,22 +75,23 @@ class Newcat extends Component {
   }
 
 
-  /////////////////////// create category, if there is any error or user has entered wrong data we will notify them.
+  /////////////////////// update category, if there is any error or user has entered wrong data we will notify them.
 
-  createCategory(){
+  updateCategory(){
     var catObject = {
+      id:this.props.id,
       name:this.state.name,
       description:this.state.description,
     }
 
 
-    this.setState({notify:<Notify color='warning' message='Please Wait...' />});
+    this.setState({notify:<Notify color='warning' message='Updating...' />});
 
     $('.loading').fadeIn(300);
 
     $.ajax({
 
-      url: settings.siteUrl+settings.api+'category/create.php',
+      url: settings.siteUrl+settings.api+'category/update.php',
       type: "POST",
       data:  JSON.stringify(catObject),
       dataType: 'json',
@@ -96,10 +100,9 @@ class Newcat extends Component {
       success: function(data){
         console.log(data);
         this.setState({
-          notify:<Notify color='success' message={`Category "${catObject.name}" has been successfully created`}/>,
-          name:'',
-          description:''
-        });
+          notify:<Notify color='success' message={`Category "${catObject.name}" has been successfully updated`}/>},
+          this.props.reload
+          );
 
         $('.loading').fadeOut(300);
 
@@ -109,7 +112,7 @@ class Newcat extends Component {
 
     console.log(error);
 
-    this.setState({notify:<Notify color='danger' btnText='retry' message='An error occured while connecting to server' onBtnClick={this.createCategory} />});
+    this.setState({notify:<Notify color='danger' btnText='retry' message='An error occured while connecting to server' onBtnClick={this.updateCategory} />});
 
     $('.loading').fadeOut(300);
 
@@ -120,6 +123,7 @@ class Newcat extends Component {
   
   }
 
+
 }
 
-export default Newcat;
+export default Updatecategory;

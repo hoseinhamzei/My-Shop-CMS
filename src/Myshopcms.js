@@ -31,24 +31,6 @@ class Myshopcms extends Component {
       this.setState({currentPage:pageTag});
   }
 
- /*suck(){
-  $.ajax({
-      type: "GET",
-      headers: { 
-        
-        },
-      url: settings.siteUrl+settings.api+ '/product/read.php',
-      dataType: 'json',
-      async: true,
-
-      success: function (data) {
-      console.log(data.records[1].name);
-      },
-      error: function(request, status, error){
-        console.log(status+' '+request.responseText+' '+error);
-    }
-  })
- }*/
 }
 
 export default Myshopcms;
