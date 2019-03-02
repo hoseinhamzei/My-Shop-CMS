@@ -46,7 +46,7 @@ class Sidemenu extends Component {
         </ul>
 
         <div className='menu-footer'>
-            <p className='text-white text-center'><a href='https://github.com/hoseinhamzei'></a></p>
+            <p className='text-center'><i className='fab fa-github'></i><a href='https://github.com/hoseinhamzei' className='ml-2' target="_blank">Hosein Hamzei</a></p>
         </div>
         </div>
 

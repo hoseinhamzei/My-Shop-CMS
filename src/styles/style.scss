@@ -114,8 +114,18 @@
             margin: 0px !important;
         }
 
-    /*----------------- side menu styles-------------------*/
+        .btn-default{
+            background: #bdc3c7;
+        }
 
+        .btn-default:hover{
+            background: #95a5a6 !important;
+        }
+
+    /*----------------- side menu styles-------------------*/
+    .menu-container{
+        z-index: 3;
+    }
     .menu-toggle{
         background: #34495e;
         padding: 9px 15px;
@@ -126,9 +136,21 @@
         }
     }
 
+    .logo{
+        background: linear-gradient( 109.6deg,  rgba(156,252,248,1) 11.2%, rgba(110,123,251,1) 91.1% );
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 200% 100%;
+	    animation-name: backclr;
+	    animation-duration: 10s;
+	    animation-iteration-count: infinite;
+	    animation-timing-function: linear;
+    }
+
     .left-menu{
             
-        z-index: 999;
+        z-index: 3;
         display: block;
         width: 300px;
         background: #34495e;
@@ -136,11 +158,13 @@
         padding-top: 0px;
         height: 1000px;
         overflow-y: auto;
-        box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+        border-right: 2px solid #2c3e50;
         transition: all 0.35s ease;
         
 
         @include mobile{
+            border:none;
+            box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
             margin-left: -193px;
             width: 220px;
             box-shadow: none;
@@ -206,7 +230,7 @@
     }
     
     .top h3{
-        font-weight: 500;
+        font-weight: 400;
         font-size: 18px;
 
         @include mobile{
@@ -229,19 +253,26 @@
 .menu-header{
     height: 100px;
     padding-top: 32px;
-    border-bottom: 5px solid #fefefe;
+    border-bottom: 2px solid #2c3e50;
+}
 
-    .logo{
-        background: linear-gradient(120deg, #FCA5F1, #B5FFFF);
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+.menu-footer{
+    background: #2c3e50;
+    color: #eee;
+    padding-top: 15px;
+    a{
+        color: #eee;
     }
+    position: fixed;
+    bottom: 0;
+    width: inherit;
+    
 }
 
 /*----------------- pages container -------------------*/
 .page-container{
     width:100%;
+    z-index: 1;
     min-height: 100%;
     background: #fefefe;
     padding-top: 7px;
@@ -316,6 +347,10 @@
 
 .current-pg{
     background: #0069d9 !important;
+}
+
+.modal{
+    z-index: 9999 !important;
 }
 
 .modal-img{
@@ -404,13 +439,13 @@
 	    background: linear-gradient(120deg, #5B617B, #111d29);
 	    background-size: 200% 100%;
 	    animation-name: backclr;
-	    animation-duration: 10s;
+	    animation-duration: 7s;
 	    animation-iteration-count: infinite;
 	    animation-timing-function: linear;
     }
 
     .login-box{
-        z-index: 9999;
+        z-index: 3;
         width: 400px;
         background: #fefefe;
         display: block;
@@ -421,9 +456,7 @@
         margin-top: 10%;
         transform: translateX(-50%);
 
-        .logo{
-            color:#5B617B;
-        }
+        
 
         .box-title{
             font-size: 22px;
@@ -480,9 +513,82 @@
 
 }
 
+/*----------------- home page --------------------- */
+.user-card{
+    z-index: 1;
+    @include mobile{
+        flex-direction: column;
+    }
+
+    
+
+    
+}
+
+.admin-avatar{
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 50%;
+}
+
+.edit-admin{
+    .form-control{
+        max-width: 100% !important;
+    }
+}
+
+.date-card{
+
+    @include desktop{
+        border-right: 1px solid #ccc;
+        border-left: 1px solid #ccc;
+        padding-left: 50px;
+    }
+
+    h5{
+        margin-top: 18px;
+        color:#34495e;
+    }
+
+    .exact-time{
+        font-family: 'Orbitron' !important;
+        font-size: 24px;
+        margin-left: -15px;
+        margin-top: 5px;
+    }
+}
+
+.latest-products{
+    margin-top: 70px;
+
+    .latest-container{
+        margin-top: 50px;
+
+        img{
+            width: 130px;
+            height: 130px;
+            object-fit: cover;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 10px;
+        }
+
+        h5{
+            margin-top: 15px !important;
+        }
+
+        p{
+            color: #ccc;
+        }
+    }
+    
+    
+}
 
 
 
+/*----------------- animations --------------------- */
 
 @keyframes backclr {
     0% {

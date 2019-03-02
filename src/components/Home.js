@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import Usercard from './Usercard';
+import Datecard from './Datecard';
+import Pdcounter from './Pdcounter';
+import Latestproducts from './Latestproducts'
+
 
 
 class Home extends Component {
@@ -7,20 +12,35 @@ class Home extends Component {
     super(props);
     //this.handlePageChange = this.handlePageChange.bind(this);
 
-    //this.state = {currentPage:'home'};
+    this.state = {
+      user:''
+    };
   }
 
   render() {
 
     return (
-      <div className='p-1 p-md-5'>
-        <h1>hm</h1>
+      <div className='p-1 p-md-5 ml-md-0 ml-5'>
+        <div className='row'>
+          <Usercard user={this.state.user}/>
+          <Datecard />
+          <Pdcounter />
+        </div>
+        <Latestproducts />
       </div>
     );
   }
 
   componentDidMount(){
     document.title = 'MY SHOP';
+    this.setState({user:this.getUserInfo()});
+  }
+
+  getUserInfo(){
+    return {
+      id: localStorage.getItem('userID'),
+      name: localStorage.getItem('userName')
+    }
   }
 
 }

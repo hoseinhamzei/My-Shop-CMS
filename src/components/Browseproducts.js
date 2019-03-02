@@ -292,7 +292,7 @@ confirmPdDelete(pdid,name){
 }
 
 var showModal = ()=>{
-  $('#myModal').modal('show');
+  $('#myModal').appendTo("body").modal('show');
 }
 
 var hideModal = ()=>{
