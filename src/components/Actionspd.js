@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 
 class Actionspd extends Component {
-    constructor(props) {
-        super(props);
-        //this.state = {  }
-
-    }
+    
     render() { 
         return (  
             <div className='pd-actions row justify-content-end pr-3'>

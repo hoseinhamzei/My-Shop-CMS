@@ -1,5 +1,5 @@
    
-    /*----------------- responsive ------------------*/
+    /*----------------------------------------------- responsive ----------------------------------------------*/
     $mobile-max: 768px;
     $desktop: 992px;
 
@@ -17,7 +17,7 @@
             }
         }
 
-    /*----------------- predefined classes-------------------*/
+    /*------------------------------------------------------ predefined classes-----------------------------------------*/
 
     .pointer{
         cursor:pointer;
@@ -90,7 +90,7 @@
             }
         }
 
-        /*----------------- override bootstrap -------------------*/
+        /*-------------------------------------------- override bootstrap -------------------------------------------*/
 
         .form-control{
             max-width: 70%;
@@ -122,7 +122,7 @@
             background: #95a5a6 !important;
         }
 
-    /*----------------- side menu styles-------------------*/
+    /*-------------------------------------- side menu styles-----------------------------------------*/
     .menu-container{
         z-index: 3;
     }
@@ -269,7 +269,7 @@
     
 }
 
-/*----------------- pages container -------------------*/
+/*----------------------------------------------- pages container ---------------------------------------------*/
 .page-container{
     width:100%;
     z-index: 1;
@@ -292,7 +292,7 @@
         @include mobile{
             margin-left: 85px;
             margin-top: 6px;
-            font-size: 20px;
+            font-size: 23px;
         }
     }
 
@@ -318,7 +318,104 @@
     border-top-left-radius: 0px !important;
 }
 
-/*----------------- browse products -------------------*/
+/*------------------------------------------------------------- home page ----------------------------------------------------- */
+
+.home-items{
+    @include mobile{
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+    }
+    
+    .user-card{
+        z-index: 1;
+        @include mobile{
+            padding-bottom: 40px;
+            border-bottom:1px solid #eee;
+        } 
+    }
+    
+    .admin-avatar{
+        max-width: 100px;
+        max-height: 100px;
+        border-radius: 50%;
+    
+        @include mobile{
+            width: 70px;
+            height: 70px;
+        }
+    }
+    
+    .edit-admin{
+        .form-control{
+            max-width: 100% !important;
+        }
+    }
+    
+    .date-card{
+    
+        @include desktop{
+            border-right: 1px solid #eee;
+            border-left: 1px solid #eee;
+            padding-left: 50px;
+        }
+    
+        @include mobile{
+            margin-top: 35px;
+            padding-bottom: 35px;
+            border-bottom:1px solid #eee;
+        }
+    
+        h5{
+            margin-top: 18px;
+            color:#34495e;
+        }
+    
+        .exact-time{
+            font-family: 'Orbitron' !important;
+            font-size: 24px;
+            margin-left: -15px;
+            margin-top: 5px;
+        }
+    }
+    
+    .pd-counter{
+        @include mobile{
+            padding-top: 35px;
+        }
+    }
+    
+    .latest-products{
+        margin-top: 35px;
+        padding-top: 35px;
+        border-top: 1px solid #eee;
+    
+        .latest-container{
+            margin-top: 50px;
+    
+            img{
+                width: 130px;
+                height: 130px;
+                object-fit: cover;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                border-radius: 10px;
+            }
+    
+            h5{
+                margin-top: 15px !important;
+            }
+    
+            p{
+                color: #bdb8b8;
+            }
+        }
+        
+        
+    }
+
+/*----------------------------------------- browse products ------------------------------------*/
 .table-container{
     margin-top: 30px;
     border-radius: 50px !important;
@@ -389,7 +486,7 @@
 }
 
 
-/*----------------- add new product -------------------*/
+/*----------------------------------- add new product ---------------------------------*/
 #price{
     width:200px;
 }
@@ -404,7 +501,7 @@
     border-radius: 10px;
 }
 
-/*----------------- login page --------------------- */
+/*-------------------------------- login page ---------------------------------- */
 .logo{
     font-family: 'Righteous' !important;
 }
@@ -513,78 +610,7 @@
 
 }
 
-/*----------------- home page --------------------- */
-.user-card{
-    z-index: 1;
-    @include mobile{
-        flex-direction: column;
-    }
 
-    
-
-    
-}
-
-.admin-avatar{
-    max-width: 100px;
-    max-height: 100px;
-    border-radius: 50%;
-}
-
-.edit-admin{
-    .form-control{
-        max-width: 100% !important;
-    }
-}
-
-.date-card{
-
-    @include desktop{
-        border-right: 1px solid #ccc;
-        border-left: 1px solid #ccc;
-        padding-left: 50px;
-    }
-
-    h5{
-        margin-top: 18px;
-        color:#34495e;
-    }
-
-    .exact-time{
-        font-family: 'Orbitron' !important;
-        font-size: 24px;
-        margin-left: -15px;
-        margin-top: 5px;
-    }
-}
-
-.latest-products{
-    margin-top: 70px;
-
-    .latest-container{
-        margin-top: 50px;
-
-        img{
-            width: 130px;
-            height: 130px;
-            object-fit: cover;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            border-radius: 10px;
-        }
-
-        h5{
-            margin-top: 15px !important;
-        }
-
-        p{
-            color: #ccc;
-        }
-    }
-    
-    
-}
 
 
 
@@ -602,7 +628,7 @@
    }
    }
 
-
+/*----------------------------- scrollbar ------------------------------------*/
    ::-webkit-scrollbar {
             width: 5px;
         }

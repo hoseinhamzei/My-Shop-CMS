@@ -20,8 +20,8 @@ class Home extends Component {
   render() {
 
     return (
-      <div className='p-1 p-md-5 ml-md-0 ml-5'>
-        <div className='row'>
+      <div className='p-1 p-md-5'>
+        <div className='row home-items'>
           <Usercard user={this.state.user}/>
           <Datecard />
           <Pdcounter />

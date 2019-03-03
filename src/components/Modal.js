@@ -3,9 +3,7 @@ import Updateproduct from './Updateproduct';
 import { settings } from '../settings';
 
 class Modal extends Component {
-    constructor(props) {
-        super(props);
-    }
+    
     render() { 
 
 

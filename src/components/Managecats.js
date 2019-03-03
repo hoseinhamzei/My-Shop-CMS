@@ -17,7 +17,7 @@ class Managecats extends Component {
     this.updateCategory = this.updateCategory.bind(this);
     this.confirmCatDelete = this.confirmCatDelete.bind(this);
 
-    //////////////////////////// set up initial states
+    //////////////////////////// set up initial states///////
     this.state = {
       catArray:[],
       asyncCatLoad:'',
@@ -28,7 +28,7 @@ class Managecats extends Component {
 
   render() {
 
-    //////////////////////////// add table rows and set their view, delete and update methods
+    //////////////////////////// add table rows and set their view, delete and update methods //////
     let tableRows = this.state.catArray.map((item,index)=>{
       return <Tablerow 
       key={index}
@@ -80,7 +80,7 @@ class Managecats extends Component {
     );
   }
 
-  //////////////////////////// initiate the component by loading categories
+  //////////////////////////// initiate the component by loading categories /////////////////////////////////////
   componentDidMount(){
     document.title = 'Manage Categories'
     this.loadCategories();
@@ -93,7 +93,7 @@ class Managecats extends Component {
 
 
 
-  //////////////////////////// load categories from server
+  //////////////////////////// load categories from server /////////////////////////////
   loadCategories(){
 
     $('.loading').fadeIn(300);
@@ -160,20 +160,20 @@ class Managecats extends Component {
 
  }
 
- //////////////////////////// show delete modal
+ //////////////////////////// show delete modal //////////////////////////////////////////
  deleteCategory(id,name){
   this.setState({
     modal:<Modalcat type='delete' name={name} onConfirm={()=>this.confirmCatDelete(id,name)} />},()=>showModal());
   }
 
 
-  //////////////////////////// show modal with update category form.
+  //////////////////////////// show modal with update category form. ////////////////////////////////
  updateCategory({ id, name, description }){
   this.setState({
     modal:<Modalcat type='update' reload={this.loadCategories} id={id} name={name} description={description} />},()=>showModal());
   }
 
-//////////////////////////// delete category from server
+//////////////////////////// delete category from server //////////////////////////////////////
 
 confirmCatDelete(id,name){
   $('.loading').fadeIn(300);
@@ -211,8 +211,9 @@ confirmCatDelete(id,name){
 }
 
 var showModal = ()=>{
-  $('#myModal').modal('show');
+  $('#myModal').appendTo("body").modal('show');
 }
+
 
 var hideModal = ()=>{
   $('#myModal').modal('hide');
