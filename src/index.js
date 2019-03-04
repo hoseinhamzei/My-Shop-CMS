@@ -11,7 +11,7 @@ import './styles/style.scss';
 import 'bootstrap/dist/js/bootstrap';
 
 const routing = (
-    <Router>
+    <Router basename="/myshoptest">
       <Switch>
         <Route exact path="/" component={Login} />
         <Route path="/cms" component={App} />

@@ -269,6 +269,116 @@
     
 }
 
+/*-------------------------------- login page ---------------------------------- */
+.logo{
+    font-family: 'Righteous' !important;
+}
+
+.divider{
+    height: 2px;
+    width: 100%;
+    background: #EEE6E6;
+}
+
+.login-page{
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100% !important;
+
+    .bg{
+        z-index: 1;
+        width: 100% !important;
+        height: 100% !important;
+        background: url("../assets/loginbg.jpg");
+        position: absolute;
+        background-size: cover;
+    }
+
+    .grad{
+        z-index: 2;
+        width: 100% !important;
+        height: 100% !important;
+        position: absolute;
+        display: block;
+	    opacity: 0.8;
+	    background: linear-gradient(120deg, #5B617B, #111d29);
+	    background-size: 200% 100%;
+	    animation-name: backclr;
+	    animation-duration: 7s;
+	    animation-iteration-count: infinite;
+	    animation-timing-function: linear;
+    }
+
+    .login-box{
+        z-index: 3;
+        width: 400px;
+        background: #fefefe;
+        display: block;
+        position: absolute;
+        border-radius: 10px;
+        box-shadow: 0px 10px 10px rgba(0, 0, 20px, 0.1);
+        margin-left: 50%;
+        margin-top: 10%;
+        transform: translateX(-50%);
+
+        
+
+        .box-title{
+            font-size: 22px;
+            font-weight: 200;
+        }
+
+        label{
+            font-size: 18px;
+            color: #7F8C8D;
+            margin-top: 4px;
+        }
+
+        .login-btn{
+            display: block;
+            width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        
+        @include mobile{
+            padding: 10px;
+            width: 100% !important;
+            margin-top: 0px;
+            margin-left: auto;
+            margin-right: auto;
+            transform: none;
+            border-radius: 0px;
+
+            .logo{
+                font-size: 22px;
+            }
+
+            .box-title{
+                font-size: 20px;
+            }
+
+            input{
+                width: auto !important;
+            }
+
+            .form-group{
+                margin-left: auto;
+                margin-right: auto;
+                width: 320px !important;
+            }
+
+            label{
+                font-size: 16px;
+            }
+        }
+    }
+
+
+}
+
+
 /*----------------------------------------------- pages container ---------------------------------------------*/
 .page-container{
     width:100%;
@@ -409,6 +519,7 @@
     
             p{
                 color: #bdb8b8;
+                font-weight: 300;
             }
         }
         
@@ -501,114 +612,6 @@
     border-radius: 10px;
 }
 
-/*-------------------------------- login page ---------------------------------- */
-.logo{
-    font-family: 'Righteous' !important;
-}
-
-.divider{
-    height: 2px;
-    width: 100%;
-    background: #EEE6E6;
-}
-
-.login-page{
-    width: 100% !important;
-    height: 100% !important;
-    min-height: 100% !important;
-
-    .bg{
-        z-index: 1;
-        width: 100% !important;
-        height: 100% !important;
-        background: url("../assets/loginbg.jpg");
-        position: absolute;
-        background-size: cover;
-    }
-
-    .grad{
-        z-index: 2;
-        width: 100% !important;
-        height: 100% !important;
-        position: absolute;
-        display: block;
-	    opacity: 0.8;
-	    background: linear-gradient(120deg, #5B617B, #111d29);
-	    background-size: 200% 100%;
-	    animation-name: backclr;
-	    animation-duration: 7s;
-	    animation-iteration-count: infinite;
-	    animation-timing-function: linear;
-    }
-
-    .login-box{
-        z-index: 3;
-        width: 400px;
-        background: #fefefe;
-        display: block;
-        position: absolute;
-        border-radius: 10px;
-        box-shadow: 0px 10px 10px rgba(0, 0, 20px, 0.1);
-        margin-left: 50%;
-        margin-top: 10%;
-        transform: translateX(-50%);
-
-        
-
-        .box-title{
-            font-size: 22px;
-            font-weight: 200;
-        }
-
-        label{
-            font-size: 18px;
-            color: #7F8C8D;
-            margin-top: 4px;
-        }
-
-        .login-btn{
-            display: block;
-            width: 200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        
-        @include mobile{
-            padding: 10px;
-            width: 100% !important;
-            margin-top: 0px;
-            margin-left: auto;
-            margin-right: auto;
-            transform: none;
-            border-radius: 0px;
-
-            .logo{
-                font-size: 22px;
-            }
-
-            .box-title{
-                font-size: 20px;
-            }
-
-            input{
-                width: auto !important;
-            }
-
-            .form-group{
-                margin-left: auto;
-                margin-right: auto;
-                width: 320px !important;
-            }
-
-            label{
-                font-size: 16px;
-            }
-        }
-    }
-
-
-}
 
 
 
