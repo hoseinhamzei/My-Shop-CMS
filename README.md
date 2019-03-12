@@ -1,6 +1,6 @@
 ## My Shop - Responsive Ecommerce cms created with react
 
-**Demo (username:admin, password:admin):** [Myshop cms showcase](https://hoseinhamzei.com/works/myshop)
+
 
 I created this cms to master react and learn it's interaction with [REST api](https://github.com/hoseinhamzei/php-online-shop-rest-api) and perform CRUD requests. I have used different features of react in this project including:
 - user authentication
