@@ -5,8 +5,8 @@
 I created this simple cms to learn advanced react. this app uses my [REST api](https://github.com/hoseinhamzei/php-online-shop-rest-api) and performs CRUD requests:
 
 ## features
-- browsing, editing, creating and deleting products
-
+- browsing, editing, creating and deleting products and categories
+- searching products
 - user authentication
 - react routing
 - forms and controlled inputs
