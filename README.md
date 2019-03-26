@@ -2,9 +2,13 @@
 
 
 
-I created this cms to master react and learn it's interaction with [REST api](https://github.com/hoseinhamzei/php-online-shop-rest-api) and perform CRUD requests. I have used different features of react in this project including:
+I created this simple cms to learn advanced react. this app uses my [REST api](https://github.com/hoseinhamzei/php-online-shop-rest-api) and performs CRUD requests:
+
+## features
+- browsing, editing, creating and deleting products
+
 - user authentication
-- changing components and routing
+- react routing
 - forms and controlled inputs
 - states and props
 - component life cycles
